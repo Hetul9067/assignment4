@@ -59,28 +59,125 @@ namespace pw2Bank
                 }
                 case 4:
                 {
-                        Console.WriteLine("hello ");
+                        Console.WriteLine("Enter client's account number : ");
+                        int accountNum = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Enter deposit amount : ");    
+                        double amount = double.Parse(Console.ReadLine());
+
+                        b1.depositAmount(accountNum - 10000, amount);
+
+                        Console.WriteLine("4");
                         break;
 
                 }
                 case 5:
                 {
-                    Console.WriteLine("hii");
+                        Console.WriteLine("5");
+                        Console.WriteLine("Enter client's account number : ");
+                        int accountNum = int.Parse(Console.ReadLine());
+
+                        Console.WriteLine("Enter withdrawal amount : ");    
+                        double amount = double.Parse(Console.ReadLine());
+
+                        b1.withdrawAmount(accountNum - 10000, amount);
+
                         break;
-                }
+
+                    }
                 case 6:
-                    break;
+                    {
+                        Console.WriteLine("1. Sort according to their balance!");
+                        Console.WriteLine("2. Sort according to their family name!");
+                        Console.WriteLine("3. Sort according to their name!");
+                        Console.WriteLine("Enter the value (1/2/3) : ");
+                        int ans = int.Parse(Console.ReadLine());
+                        switch (ans)
+                        {
+                            case 1:
+                                {
+                                    Console.WriteLine("1. sorting by ascending order!");
+                                    Console.WriteLine("2. sorting by descending order!");
+                                    Console.WriteLine("Enter the value : ");
+                                    int a = int.Parse(Console.ReadLine());
+                                    switch (a)
+                                    {
+                                        case 1:
+                                            {
+
+                                                b1.sortDisplayByBalance(true);
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                b1.sortDisplayByBalance(false);
+                                                break;
+                                            }
+                                    }
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    Console.WriteLine("1. sorting by ascending order!");
+                                    Console.WriteLine("2. sorting by descending order!");
+                                    Console.WriteLine("Enter the value : ");
+                                    int a = int.Parse(Console.ReadLine());
+                                    switch (a)
+                                    {
+                                        case 1:
+                                            {
+
+                                                b1.sortDisplayByFamilyName(true);
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                b1.sortDisplayByFamilyName(false);
+                                                break;
+                                            }
+                                    }
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    Console.WriteLine("1. sorting by ascending order!");
+                                    Console.WriteLine("2. sorting by descending order!");
+                                    Console.WriteLine("Enter the value : ");
+                                    int a = int.Parse(Console.ReadLine());
+                                    switch (a)
+                                    {
+                                        case 1:
+                                            {
+
+                                                b1.sortDisplayByName(true);
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                b1.sortDisplayByName(false);
+                                                break;
+                                            }
+                                    }
+                                    break; 
+                                }
+                        }
+                        break;
+                    }
                 case 7:
                 {
-                        Console.WriteLine("7");
-                        break;
+                    b1.avgBal();
+                    break;
                 }
                 case 8:
                 {
+                    Console.WriteLine("total balance is : " +b1.totalBalance());
                     break;
                 }
                 case 9:
                 {
+                        Console.WriteLine("Enter the account number : ");
+                        int uniqueAccountNumber = int.Parse(Console.ReadLine());
+                    b1.createAccount(uniqueAccountNumber-10000);
                     break;
                 }
                 case 10:
