@@ -18,12 +18,15 @@ namespace pw2Bank
         public static int lastAddedRemoveAccountIndex = 0;
         public int totalRemovedAcc = 0;
 
-        public void addRemovedAccountNumber(int removedAccNumber)
+        /*public void addRemovedAccountNumber(int removedAccNumber)
         {
-
+            for(int i=0; i< removeAccounts.Length; i++)
+            {
+                Console.WriteLine("hello "+ i + " " + removeAccounts[i]);
+            }
             removeAccounts[removedAccNumber] = true;
             totalRemovedAcc++;
-            /*removeAccount[5] = 1;
+            *//*removeAccount[5] = 1;
             removeAccount[99] = 1;
             *//*for(int i=0; i< removeAccount.Length; i++)
             {
@@ -33,9 +36,9 @@ namespace pw2Bank
 
                     Console.WriteLine(removeAccount[i]);
                 }
-            }*/
+            }*//*
         }
-
+*/
         //taking available account number from removed account number list
         public int availableAccFromRemovedAccList()
         {
@@ -46,6 +49,10 @@ namespace pw2Bank
                 {
                     break;
                 }
+            }
+            for (int j = 0; j < removeAccounts.Length; j++)
+            {
+                Console.WriteLine("hello " + j + " " + removeAccounts[j]);
             }
             removeAccounts[i] = false; 
             totalRemovedAcc--;
@@ -64,7 +71,7 @@ namespace pw2Bank
             }
             return count;
         }
-
+       
         //adding a new account
         public void addBankAccount()
         {
@@ -80,6 +87,27 @@ namespace pw2Bank
             if (totalRemovedAcc > 0)
             {
                 accountNum = availableAccFromRemovedAccList();
+
+                Client[] tempClients = new Client[100];
+                int i ;
+                for (i =0;i < accountNum; i++)
+                {
+                    tempClients[i] = clients[i];
+                }
+
+
+
+                for(i = accountNum ; i< currentAccount; i++)
+                {
+                    tempClients[i +1] = clients[i];
+                }
+                currentAccount++;
+                for(i = 0; i< currentAccount; i++)
+                {
+                    clients[i] = tempClients[i];
+                }
+                
+                
             }
             else
             {
@@ -115,11 +143,12 @@ namespace pw2Bank
 
         public void removeBankAccount(int uniqueAccountNumber)
         {
-            
+            int accountNum = uniqueAccountNumber;
             if(totalRemovedAcc > 0)
             {
                 uniqueAccountNumber -= removedAccCounter(uniqueAccountNumber);
             }
+            removeAccounts[accountNum] = true;
 
             Client[] tempClients = new Client[100];
             for(int i=0; i < uniqueAccountNumber; i++)
@@ -132,7 +161,6 @@ namespace pw2Bank
                 tempClients[i] = clients[i + 1];
             }
             clients = tempClients;
-            removeAccounts[uniqueAccountNumber] = true;
             totalRemovedAcc++;
 
             for(int i= 0; i< currentAccount; i++)
